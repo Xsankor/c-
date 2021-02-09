@@ -11,22 +11,21 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	const int phys_sizeA = 100, phys_sizeB = 100;
 	int n = 0, m = 0;
-	cout << "Êîëè÷åñòâî ýëåìåíòîâ ìàññèâà A = ";
+	cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð¼Ð°ÑÑÐ¸Ð²Ð° A = ";
 	cin >> n;
-	cout << "Êîëè÷åñòâî ýëåìåíòîâ ìàññèâà B = ";
+	cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð¼Ð°ÑÑÐ¸Ð²Ð° B = ";
 	cin >> m;
 
 	if ((n <= 0 || n > phys_sizeA) || (m <= 0 || m > phys_sizeB))
 	{
-		cout << "Îøèáî÷íûé ðàçìåð ìàññèâà";
+		cout << "ÐžÑˆÐ¸Ð±Ð¾Ñ‡Ð½Ñ‹Ð¹ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ð¼Ð°ÑÑÐ¸Ð²Ð°";
 	}
 	else
 	{
 		int* A = new int[n];
 		int* B = new int[m];
 		int k = 0;
-		int* C = new int[k];
-		int rand_num;
+		int num = 0;
 		srand(static_cast<unsigned int>(time(0)));
 		cout << "A ";
 		for (int i = 0; i < n; i++) {
@@ -43,29 +42,39 @@ int main()
 		{
 			for (int j = 0; j < m; j++) {
 				if (A[i] == B[j]) {
-					C[k] = A[i];
 					k++;
 				}
 			}
 		}
+		int* C = new int[k];
 
-		cout << "Ýëåìåíòû ìàññèâà A:" << endl;
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j < m; j++) {
+				if (A[i] == B[j]) {
+					C[num] = A[i];
+					num++;
+
+				}
+			}
+		}
+		cout << "Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹ Ð¼Ð°ÑÑÐ¸Ð²Ð° A:" << endl;
 		for (int i = 0; i < n; i++) {
 			cout << A[i] << " ";
 		}
 		cout << endl;
-		cout << "Ýëåìåíòû ìàññèâà B:" << endl;
+		cout << "Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹ Ð¼Ð°ÑÑÐ¸Ð²Ð° B:" << endl;
 		for (int i = 0; i < m; i++) {
 			cout << B[i] << " ";
 		}
 		cout << endl;
-		cout << "Ýëåìåíòû ìàññèâà C:" << endl;
+		cout << "Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹ Ð¼Ð°ÑÑÐ¸Ð²Ð° C:" << endl;
 		for (int i = 0; i < k; i++) {
 			cout << C[i] << " ";
 		}
 		cout << endl;
 
-		// Ñîðòèðîâêà âûáîðîì
+		// Ð¡Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ° Ð²Ñ‹Ð±Ð¾Ñ€Ð¾Ð¼
 		for (int i = 0; i < k - 1; i++)
 		{
 			int min_ind = i;
@@ -82,7 +91,7 @@ int main()
 			}
 		}
 
-		cout << "Ýëåìåíòû ìàññèâà Ñ ïî âîçðàñòàíèþ:" << endl;
+		cout << "Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹ Ð¼Ð°ÑÑÐ¸Ð²Ð° Ð¡ Ð¿Ð¾ Ð²Ð¾Ð·Ñ€Ð°ÑÑ‚Ð°Ð½Ð¸ÑŽ:" << endl;
 		for (int i = 0; i < k; i++) {
 			cout << C[i] << " ";
 		}
